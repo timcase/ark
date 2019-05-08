@@ -376,7 +376,7 @@ action :setup_py_build do
     cwd new_resource.path
     environment new_resource.environment
     notifies :run, "execute[set owner on #{new_resource.path}]"
-    notifies :run, "execute[python setup.py build #{new_resource.path}]"
+    notifies :run, "execute[python3 setup.py build #{new_resource.path}]"
     action :nothing
   end
 
@@ -386,8 +386,8 @@ action :setup_py_build do
     action :nothing
   end
 
-  execute "python setup.py build #{new_resource.path}" do
-    command "python setup.py build #{new_resource.make_opts.join(' ')}"
+  execute "python3 setup.py build #{new_resource.path}" do
+    command "python3 setup.py build #{new_resource.make_opts.join(' ')}"
     cwd new_resource.path
     environment new_resource.environment
     action :nothing
@@ -418,7 +418,7 @@ action :setup_py_install do
     cwd new_resource.path
     environment new_resource.environment
     notifies :run, "execute[set owner on #{new_resource.path}]"
-    notifies :run, "execute[python setup.py install #{new_resource.path}]"
+    notifies :run, "execute[python3 setup.py install #{new_resource.path}]"
     action :nothing
   end
 
@@ -428,8 +428,8 @@ action :setup_py_install do
     action :nothing
   end
 
-  execute "python setup.py install #{new_resource.path}" do
-    command "python setup.py install #{new_resource.make_opts.join(' ')}"
+  execute "python3 setup.py install #{new_resource.path}" do
+    command "python3 setup.py install #{new_resource.make_opts.join(' ')}"
     cwd new_resource.path
     environment new_resource.environment
     action :nothing
@@ -460,7 +460,7 @@ action :setup_py do
     cwd new_resource.path
     environment new_resource.environment
     notifies :run, "execute[set owner on #{new_resource.path}]"
-    notifies :run, "execute[python setup.py #{new_resource.path}]"
+    notifies :run, "execute[python3 setup.py #{new_resource.path}]"
     action :nothing
   end
 
@@ -470,8 +470,8 @@ action :setup_py do
     action :nothing
   end
 
-  execute "python setup.py #{new_resource.path}" do
-    command "python setup.py #{new_resource.make_opts.join(' ')}"
+  execute "python3 setup.py #{new_resource.path}" do
+    command "python3 setup.py #{new_resource.make_opts.join(' ')}"
     cwd new_resource.path
     environment new_resource.environment
     action :nothing
